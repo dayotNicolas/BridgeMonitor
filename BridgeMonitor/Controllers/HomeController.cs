@@ -22,8 +22,9 @@ namespace BridgeMonitor.Controllers
 
         public IActionResult Index()
         {
-            var boats = GetBoatsInfosFromApi();
-            return View(boats);
+            var nextBoat = GetNextBoatCloseUp();
+
+            return View(nextBoat);
         }
 
         public IActionResult Privacy()
@@ -48,6 +49,33 @@ namespace BridgeMonitor.Controllers
                 var result = JsonConvert.DeserializeObject<List<Boat>>(stringResult.Result);
                 return result;
             }
+        }
+
+        private static Boat GetNextBoatCloseUp()
+        {
+            
+            DateTime Today = DateTime.Today;
+            DateTime next = new DateTime(3000, 1, 1);
+            var boats = GetBoatsInfosFromApi();
+            Boat nextBoat = null;
+
+            foreach (Boat boat in boats)
+            {
+                if (boat.ClosingDate >= Today && (boat.ClosingDate < next))
+                {
+                    next = boat.ClosingDate;
+                } 
+            }
+
+            foreach (Boat boat in boats)
+            {
+                if (boat.ClosingDate == next)
+                {
+                    nextBoat = boat;
+                }
+            }
+
+            return nextBoat;
         }
     }
 }

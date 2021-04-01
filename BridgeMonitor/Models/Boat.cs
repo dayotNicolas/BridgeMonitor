@@ -21,6 +21,8 @@ namespace BridgeMonitor
 
         [JsonProperty("reopening_date")]
         public DateTime ReopeningDate { get; set; }
+
+
     }
 
 }
