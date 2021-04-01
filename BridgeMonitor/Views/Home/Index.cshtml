@@ -1,8 +1,26 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model List<Boat>
 
 <div class="text-center">
     <h1 class="display-4">Prochaine fermeture</h1>
-    
+    <table class="table">
+        <thead>
+            <tr>
+                <th> Nom du Bateau </th>
+                <th> Type de fermeture </th>
+                <th> Date de fermeture </th>
+                <th> Date de réouverture </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var boat in Model)
+                {
+                    <tr>
+                        <td>@boat.BoatName</td>
+                        <td>@boat.ClosingType</td>
+                        <td>@boat.ClosingDate</td>
+                        <td>@boat.ReopeningDate</td>
+                    </tr>
+                }
+        </tbody>
+    </table>
 </div>

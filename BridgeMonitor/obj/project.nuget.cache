@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "8hf9wmeMeprsk/DLczsnrxu/G+0JiRnrllWPWbO+rkwf1I8qH4RglR7j5V5tCNkWrcmo8RVm1KPajpPt+/iOsQ==",
+  "dgSpecHash": "zgpJRy5HrlBC464cXAkkX5SlkrhNsdhcP739JvSXZP6u6WL/EXYmCCMOOcCECUDqlp5Cmj8ej6UmwitHfLGucQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Dayot\\OneDrive\\Desktop\\architecture_logiciel\\BridgeMonitor\\BridgeMonitor\\BridgeMonitor.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Dayot\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }

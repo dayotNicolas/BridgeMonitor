@@ -38,3 +38,4 @@ C:\Users\Dayot\OneDrive\Desktop\architecture_logiciel\BridgeMonitor\BridgeMonito
 C:\Users\Dayot\OneDrive\Desktop\architecture_logiciel\BridgeMonitor\BridgeMonitor\obj\Debug\net5.0\BridgeMonitor.pdb
 C:\Users\Dayot\OneDrive\Desktop\architecture_logiciel\BridgeMonitor\BridgeMonitor\obj\Debug\net5.0\BridgeMonitor.genruntimeconfig.cache
 C:\Users\Dayot\OneDrive\Desktop\architecture_logiciel\BridgeMonitor\BridgeMonitor\obj\Debug\net5.0\BridgeMonitor.csproj.CopyComplete
+C:\Users\Dayot\OneDrive\Desktop\architecture_logiciel\BridgeMonitor\BridgeMonitor\bin\Debug\net5.0\Newtonsoft.Json.dll
