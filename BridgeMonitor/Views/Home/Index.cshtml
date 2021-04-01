@@ -1,9 +1,208 @@
 ﻿@model Boat
+@using System.Globalization
+@{
+    var culture = new CultureInfo("fr-FR");
+    var heureNum = (int)Model.ClosingDate.Hour;
+    var dateTest = new DateTime(2021, 06, 12, 18, 32, 27);
+}
+<html>
+    <head>
+        @section Styles {
+            <style>
+                body {
+                    text-align: center;
+                    background: #00ECB9;
+                    font-family: sans-serif;
+                    font-weight: 100;
+                }
 
-<div class="text-center">
-    <h1 class="display-4">Prochaine fermeture</h1>
-    <h2>@Model.BoatName</h2>
-    <p>@Model.ClosingDate</p>
-    <p>@Model.ReopeningDate</p>
-</div>
+                h1 {
+                    color: #396;
+                    font-weight: 100;
+                    font-size: 40px;
+                    margin: 40px 0px 20px;
+                }
 
+                #clockdiv {
+                    font-family: sans-serif;
+                    color: #fff;
+                    display: inline-block;
+                    font-weight: 100;
+                    text-align: center;
+                    font-size: 30px;
+                }
+
+                    #clockdiv > div {
+                        padding: 10px;
+                        border-radius: 3px;
+                        background: #00BF96;
+                        display: inline-block;
+                    }
+
+                    #clockdiv div > span {
+                        padding: 15px;
+                        border-radius: 3px;
+                        background: #00816A;
+                        display: inline-block;
+                    }
+
+                .smalltext {
+                    padding-top: 5px;
+                    font-size: 16px;
+                }
+
+                #buttonValide {
+                    display: inline-block;
+                    background-color: #7b38d8;
+                    border-radius: 10px;
+                    border: 4px double #cccccc;
+                    color: #eeeeee;
+                    text-align: center;
+                    font-size: 28px;
+                    padding: 20px;
+                    width: 200px;
+                    -webkit-transition: all 0.5s;
+                    -moz-transition: all 0.5s;
+                    -o-transition: all 0.5s;
+                    transition: all 0.5s;
+                    cursor: pointer;
+                    margin: 5px;
+                }
+
+                #buttonValide:hover {
+                    background-color: green;
+                }
+
+                #buttonBouchon {
+                    display: inline-block;
+                    background-color: #7b38d8;
+                    border-radius: 10px;
+                    border: 4px double #cccccc;
+                    color: #eeeeee;
+                    text-align: center;
+                    font-size: 28px;
+                    padding: 20px;
+                    width: 200px;
+                    -webkit-transition: all 0.5s;
+                    -moz-transition: all 0.5s;
+                    -o-transition: all 0.5s;
+                    transition: all 0.5s;
+                    cursor: pointer;
+                    margin: 5px;
+                }
+
+                #buttonBouchon:hover {
+                    background-color: red;
+                }
+            </style>
+        }
+    </head>
+    <body>
+        <div class="text-center">
+            <h1 class="display-4">Prochaine fermeture</h1>
+            <h2>La prochaine fermeture aura lieu : le @Model.ClosingDate.ToString("dddd d MMMM, hh:mm", culture)</h2>
+            <h2>La réouverture ne sera pas avant : le @Model.ReopeningDate.ToString("dddd d MMMM, hh:mm", culture)</h2>
+            @if (Model.BoatName == "MAINTENANCE")
+            {
+                <p>Fermeture pour : @Model.BoatName</p>
+            }
+            else
+            {
+                <p>Fermé pour le passage du @Model.BoatName</p>
+            }
+            @{
+                var duree = Model.ReopeningDate - Model.ClosingDate;
+            }
+            <p>Le pont sera fermé pendant @duree.Hours heure(s) @duree.Minutes minute(s)</p>
+        </div>
+
+
+        <h1>Temps restant avant la prochaine fermeture</h1>
+        <div id="clockdiv">
+            <div>
+                <span class="days"></span>
+                <div class="smalltext">Jours</div>
+            </div>
+            <div>
+                <span class="hours"></span>
+                <div class="smalltext">Heures</div>
+            </div>
+            <div>
+                <span class="minutes"></span>
+                <div class="smalltext">Minutes</div>
+            </div>
+            <div>
+                <span class="seconds"></span>
+                <div class="smalltext">Secondes</div>
+            </div>
+        </div>
+        <div id="indicateur">
+            @if (heureNum >= 7 && heureNum <= 9)
+            {
+                <button id="buttonBouchon"> le trafic sera perturbé !</button>
+            }
+            else if (heureNum >= 17 && heureNum <= 19)
+            {
+                <button id="buttonBouchon"> le trafic sera perturbé !</button>
+            }
+            else
+            {
+                <button id="buttonValide">Pas de risque de Trafic perturbé !</button>
+            }
+
+        </div>
+
+        <input type="hidden" value="@Model.ClosingDate.ToString("yyyy-MM-ddThh:mm:ss", culture)" id="toGet" />
+    </body>
+</html>
+
+@section Scripts {
+
+
+    <script type="text/javascript">
+
+        function getTimeRemaining(endtime) {
+            const total = Date.parse(endtime) - Date.parse(new Date());
+            const seconds = Math.floor((total / 1000) % 60);
+            const minutes = Math.floor((total / 1000 / 60) % 60);
+            const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+            const days = Math.floor(total / (1000 * 60 * 60 * 24));
+
+            return {
+                total,
+                days,
+                hours,
+                minutes,
+                seconds
+            };
+        }
+
+        function initializeClock(id, endtime) {
+            const clock = document.getElementById(id);
+            const daysSpan = clock.querySelector('.days');
+            const hoursSpan = clock.querySelector('.hours');
+            const minutesSpan = clock.querySelector('.minutes');
+            const secondsSpan = clock.querySelector('.seconds');
+
+            function updateClock() {
+                const t = getTimeRemaining(endtime);
+
+                daysSpan.innerHTML = t.days;
+                hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+                minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+                secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+                if (t.total <= 0) {
+                    clearInterval(timeinterval);
+                }
+            }
+
+            updateClock();
+            const timeinterval = setInterval(updateClock, 1000);
+        }
+
+        const deadline = new Date(document.getElementById("toGet").value);
+        initializeClock('clockdiv', deadline);
+    </script>
+
+}
