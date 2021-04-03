@@ -1,0 +1,195 @@
+﻿@model List<Boat>
+@using System.Globalization
+@{
+    var culture = new CultureInfo("fr-FR");
+}
+
+<html>
+<head>
+    @section Styles {
+        <style>
+            body {
+                text-align: center;
+                background: #00ECB9;
+                font-family: sans-serif;
+                font-weight: 100;
+            }
+
+            .modal {
+                position: fixed;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.6);
+            }
+
+            .modal-wrapper {
+                overflow: auto;
+                background-color: white;
+                width: 1800px;
+                max-width: calc(100vw - 20px);
+                max-height: calc(100vh - 20px);
+                height: 720px;
+                margin: 8% auto;
+                border-radius: 5px;
+                display: flex;
+                justify-items: center;
+            }
+            .modal-wrapper::content{
+                width: 280px;
+                position: relative;
+                display: flex;
+                flex-direction: row;
+                top: 40px;
+                left: 40px;
+            }
+        </style>
+
+    }
+</head>
+<body>
+    <h1>Toutes les fermetures</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Raison Fermeture</th>
+                <th>Date de fermeture</th>
+                <th>Durée de la fermeture</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{ var ids = 1; }
+            @foreach (Boat boat in Model)
+            {
+                ids++;
+                var duree = boat.ReopeningDate - boat.ClosingDate;
+                var href = "#modal" + ids;
+                var idModal = "modal" + ids;
+                if (boat.ClosingDate > DateTime.Today)
+                {
+                    <tr>
+                        <td>@boat.BoatName</td>
+                        <td>@boat.ClosingDate</td>
+                        <td>@duree</td>
+                        <td>
+                            <a href=@href class="js-modal">Détails</a>
+                            <aside id=@idModal class="modal" aria-hidden="true" role="dialog" style="display:none;">
+                                <div class="modal-wrapper js-modal-stop">
+                                    <h2>La prochaine fermeture aura lieu : le @boat.ClosingDate.ToString("dddd d MMMM, hh:mm", culture)</h2>
+                                    <h2>La réouverture ne sera pas avant : le @boat.ReopeningDate.ToString("dddd d MMMM, hh:mm", culture)</h2>
+                                    @if (boat.BoatName == "MAINTENANCE")
+                                    {
+                                        <p>Fermeture pour : @boat.BoatName</p>
+                                    }
+                                    else
+                                    {
+                                        <p>Fermé pour le passage du @boat.BoatName</p>
+                                    }
+                                    @{
+                                        var dureee = boat.ReopeningDate - boat.ClosingDate;
+                                    }
+                                    <p>Le pont sera fermé pendant @dureee.Hours heure(s) @dureee.Minutes minute(s)</p>
+                                </div>
+                            </aside>
+                        </td>
+                    </tr>
+
+                }
+            }
+        </tbody>
+    </table>
+    <h2>Précédentes fermetures : </h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Raison Fermeture</th>
+                <th>Date de fermeture</th>
+                <th>Durée de la fermeture</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Boat boat in Model)
+            {
+                var duree = boat.ReopeningDate - boat.ClosingDate;
+                ids++;
+                var href = "#modal" + ids;
+                var idModal = "modal" + ids;
+                if (boat.ClosingDate < DateTime.Today)
+                {
+                    <tr>
+                        <td>@boat.BoatName</td>
+                        <td>@boat.ClosingDate</td>
+                        <td>@duree</td>
+                        <td>
+                            <a href=@href class="js-modal">Détails</a>
+                            <aside id=@idModal class="modal" aria-hidden="true" role="dialog" style="display:none;">
+                                <div class="modal-wrapper js-modal-stop">
+                                    <h2>La prochaine fermeture aura lieu : le @boat.ClosingDate.ToString("dddd d MMMM, hh:mm", culture)</h2>
+                                    <h2>La réouverture ne sera pas avant : le @boat.ReopeningDate.ToString("dddd d MMMM, hh:mm", culture)</h2>
+                                    @if (boat.BoatName == "MAINTENANCE")
+                                    {
+                                        <p>Fermeture pour : @boat.BoatName</p>
+                                    }
+                                    else
+                                    {
+                                        <p>Fermé pour le passage du @boat.BoatName</p>
+                                    }
+                                    @{
+                                        var dureee = boat.ReopeningDate - boat.ClosingDate;
+                                    }
+                                    <p>Le pont sera fermé pendant @dureee.Hours heure(s) @dureee.Minutes minute(s)</p>
+                                </div>
+                            </aside>
+                        </td>
+                    </tr>
+
+                }
+            }
+        </tbody>
+    </table>
+</body>
+</html>
+@section Scripts {
+    <script>
+        let modal = null;
+
+        const openModal = function (e) {
+            e.preventDefault();
+            const target = document.querySelector(e.target.getAttribute('href'));
+            console.log();
+            target.style.display = null;
+            target.removeAttribute('aria-hidden');
+            target.setAttribute('aria-modal', 'true');
+            modal = target;
+            modal.addEventListener('click', closeModal);
+            //modal.querySelector('#social_network_Ajouter').addEventListener('click', closeModal);
+            modal.querySelector('.js-modal-stop').addEventListener('click', stopPropagation);
+        }
+
+        const closeModal = function (e) {
+            if (modal === null) return;
+            e.preventDefault();
+            modal.style.display = "none";
+            modal.setAttribute('aria-hidden', 'true');
+            modal.removeAttribute('aria-modal');
+            modal.removeEventListener('click', closeModal);
+            modal.querySelector('#social_network_Ajouter').removeEventListener('click', closeModal);
+            modal.querySelector('.js-modal-stop').removeEventListener('click', stopPropagation);
+            modal = null;
+        }
+
+        const stopPropagation = function (e) {
+            e.stopPropagation();
+        }
+
+        document.querySelectorAll('.js-modal').forEach(a => {
+            a.addEventListener('click', openModal);
+        })
+
+    </script>
+
+}

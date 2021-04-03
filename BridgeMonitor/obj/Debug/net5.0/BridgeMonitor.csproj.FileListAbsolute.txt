@@ -24,7 +24,6 @@ C:\Users\Dayot\OneDrive\Desktop\architecture_logiciel\BridgeMonitor\BridgeMonito
 C:\Users\Dayot\OneDrive\Desktop\architecture_logiciel\BridgeMonitor\BridgeMonitor\obj\Debug\net5.0\BridgeMonitor.TagHelpers.output.cache
 C:\Users\Dayot\OneDrive\Desktop\architecture_logiciel\BridgeMonitor\BridgeMonitor\obj\Debug\net5.0\BridgeMonitor.RazorCoreGenerate.cache
 C:\Users\Dayot\OneDrive\Desktop\architecture_logiciel\BridgeMonitor\BridgeMonitor\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
-C:\Users\Dayot\OneDrive\Desktop\architecture_logiciel\BridgeMonitor\BridgeMonitor\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\Dayot\OneDrive\Desktop\architecture_logiciel\BridgeMonitor\BridgeMonitor\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\Dayot\OneDrive\Desktop\architecture_logiciel\BridgeMonitor\BridgeMonitor\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\Dayot\OneDrive\Desktop\architecture_logiciel\BridgeMonitor\BridgeMonitor\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -39,3 +38,4 @@ C:\Users\Dayot\OneDrive\Desktop\architecture_logiciel\BridgeMonitor\BridgeMonito
 C:\Users\Dayot\OneDrive\Desktop\architecture_logiciel\BridgeMonitor\BridgeMonitor\obj\Debug\net5.0\BridgeMonitor.genruntimeconfig.cache
 C:\Users\Dayot\OneDrive\Desktop\architecture_logiciel\BridgeMonitor\BridgeMonitor\obj\Debug\net5.0\BridgeMonitor.csproj.CopyComplete
 C:\Users\Dayot\OneDrive\Desktop\architecture_logiciel\BridgeMonitor\BridgeMonitor\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\Dayot\OneDrive\Desktop\architecture_logiciel\BridgeMonitor\BridgeMonitor\obj\Debug\net5.0\Razor\Views\Home\AllCloses.cshtml.g.cs

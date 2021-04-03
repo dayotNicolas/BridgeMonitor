@@ -27,9 +27,11 @@ namespace BridgeMonitor.Controllers
             return View(nextBoat);
         }
 
-        public IActionResult Privacy()
+        public IActionResult AllCloses()
         {
-            return View();
+            var arrayBoats = GetBoatsInfosFromApi();
+            var boats = arrayBoats.OrderBy(closing=>Convert.ToDateTime(closing.ClosingDate)).ToList();
+            return View(boats);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
