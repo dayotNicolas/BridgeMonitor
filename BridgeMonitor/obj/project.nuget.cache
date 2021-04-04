@@ -1,10 +1,23 @@
 {
   "version": 2,
-  "dgSpecHash": "zgpJRy5HrlBC464cXAkkX5SlkrhNsdhcP739JvSXZP6u6WL/EXYmCCMOOcCECUDqlp5Cmj8ej6UmwitHfLGucQ==",
+  "dgSpecHash": "0J5WLQ6cSRyKIhBSVV6BGEBVjUB+4lhZSruHmKapXCii0WznhcdBezbOT61Nw8GIBhx8m3bb3Bq18fuWoQDYng==",
   "success": true,
   "projectFilePath": "C:\\Users\\Dayot\\OneDrive\\Desktop\\architecture_logiciel\\BridgeMonitor\\BridgeMonitor\\BridgeMonitor.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Dayot\\.nuget\\packages\\dday.ical\\2.0.0\\dday.ical.2.0.0.nupkg.sha512",
+    "C:\\Users\\Dayot\\.nuget\\packages\\ical.net\\2.2.3\\ical.net.2.2.3.nupkg.sha512",
     "C:\\Users\\Dayot\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Le package 'Ical.Net 2.2.3' a été restauré en utilisant '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' au lieu du framework cible du projet 'net5.0'. Ce package n'est peut-être pas totalement compatible avec votre projet.",
+      "libraryId": "Ical.Net",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    }
+  ]
 }

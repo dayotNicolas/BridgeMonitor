@@ -26,6 +26,10 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AllCloses">Toutes les fermetures</a>
                         </li>
                     </ul>
+                    @using (Html.BeginForm("DownloadCalendar", "Home"))
+                    {
+                        <button class="btn btn-primary">Calendrier<i class="fas fa-download ml-3"></i></button>
+                    }
                 </div>
             </div>
         </nav>

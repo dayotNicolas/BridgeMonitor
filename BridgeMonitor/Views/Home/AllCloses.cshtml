@@ -29,24 +29,71 @@
 
             .modal-wrapper {
                 overflow: auto;
-                background-color: white;
-                width: 1800px;
+                background: #00ECB9;
+                width: 1200px;
                 max-width: calc(100vw - 20px);
                 max-height: calc(100vh - 20px);
                 height: 720px;
                 margin: 8% auto;
                 border-radius: 5px;
                 display: flex;
+                flex-direction: column;
                 justify-items: center;
             }
-            .modal-wrapper::content{
-                width: 280px;
-                position: relative;
-                display: flex;
-                flex-direction: row;
-                top: 40px;
-                left: 40px;
+
+            #buttonValide {
+                display: inline-block;
+                background-color: #7b38d8;
+                border-radius: 10px;
+                border: 4px double #cccccc;
+                color: #eeeeee;
+                text-align: center;
+                font-size: 28px;
+                padding: 20px;
+                width: 200px;
+                -webkit-transition: all 0.5s;
+                -moz-transition: all 0.5s;
+                -o-transition: all 0.5s;
+                transition: all 0.5s;
+                cursor: pointer;
+                margin: 5px;
             }
+
+            #buttonValide:hover {
+                background-color: green;
+            }
+
+            #buttonBouchon {
+                display: inline-block;
+                background-color: #7b38d8;
+                border-radius: 10px;
+                border: 4px double #cccccc;
+                color: #eeeeee;
+                text-align: center;
+                font-size: 28px;
+                padding: 20px;
+                width: 200px;
+                -webkit-transition: all 0.5s;
+                -moz-transition: all 0.5s;
+                -o-transition: all 0.5s;
+                transition: all 0.5s;
+                cursor: pointer;
+                margin: 5px;
+            }
+
+            #buttonBouchon:hover {
+                background-color: red;
+            }
+
+            .js-modal {
+                border:solid;
+                width: 33px;
+                height: 25px;
+                border-radius:1px;
+                color:black;
+                background-color:wheat;
+            }
+            
         </style>
 
     }
@@ -71,6 +118,7 @@
                 var idModal = "modal" + ids;
                 if (boat.ClosingDate > DateTime.Today)
                 {
+                    var heureNum = (int)boat.ClosingDate.Hour;
                     <tr>
                         <td>@boat.BoatName</td>
                         <td>@boat.ClosingDate</td>
@@ -93,6 +141,20 @@
                                         var dureee = boat.ReopeningDate - boat.ClosingDate;
                                     }
                                     <p>Le pont sera fermé pendant @dureee.Hours heure(s) @dureee.Minutes minute(s)</p>
+                                    <div id="indicateur">
+                                        @if (heureNum >= 7 && heureNum <= 9)
+                                        {
+                                            <button id="buttonBouchon"> le trafic sera perturbé !</button>
+                                        }
+                                        else if (heureNum >= 17 && heureNum <= 19)
+                                        {
+                                            <button id="buttonBouchon"> le trafic sera perturbé !</button>
+                                        }
+                                        else
+                                        {
+                                            <button id="buttonValide">Pas de risque de Trafic perturbé !</button>
+                                        }
+                                    </div>
                                 </div>
                             </aside>
                         </td>
@@ -120,6 +182,7 @@
                 var idModal = "modal" + ids;
                 if (boat.ClosingDate < DateTime.Today)
                 {
+                    var heureNum = (int)boat.ClosingDate.Hour;
                     <tr>
                         <td>@boat.BoatName</td>
                         <td>@boat.ClosingDate</td>
@@ -142,6 +205,20 @@
                                         var dureee = boat.ReopeningDate - boat.ClosingDate;
                                     }
                                     <p>Le pont sera fermé pendant @dureee.Hours heure(s) @dureee.Minutes minute(s)</p>
+                                    <div id="indicateur">
+                                        @if (heureNum >= 7 && heureNum <= 9)
+                                        {
+                                            <button id="buttonBouchon"> le trafic sera perturbé !</button>
+                                        }
+                                        else if (heureNum >= 17 && heureNum <= 19)
+                                        {
+                                            <button id="buttonBouchon"> le trafic sera perturbé !</button>
+                                        }
+                                        else
+                                        {
+                                            <button id="buttonValide">Pas de risque de Trafic perturbé !</button>
+                                        }
+                                    </div>
                                 </div>
                             </aside>
                         </td>
