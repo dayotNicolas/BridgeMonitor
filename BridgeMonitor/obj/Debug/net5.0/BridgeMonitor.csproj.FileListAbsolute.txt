@@ -39,7 +39,6 @@ C:\Users\Dayot\OneDrive\Desktop\architecture_logiciel\BridgeMonitor\BridgeMonito
 C:\Users\Dayot\OneDrive\Desktop\architecture_logiciel\BridgeMonitor\BridgeMonitor\obj\Debug\net5.0\BridgeMonitor.csproj.CopyComplete
 C:\Users\Dayot\OneDrive\Desktop\architecture_logiciel\BridgeMonitor\BridgeMonitor\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Users\Dayot\OneDrive\Desktop\architecture_logiciel\BridgeMonitor\BridgeMonitor\obj\Debug\net5.0\Razor\Views\Home\AllCloses.cshtml.g.cs
-C:\Users\Dayot\OneDrive\Desktop\architecture_logiciel\BridgeMonitor\BridgeMonitor\obj\Debug\net5.0\Razor\Views\Home\Calendar.cshtml.g.cs
 C:\Users\Dayot\OneDrive\Desktop\architecture_logiciel\BridgeMonitor\BridgeMonitor\bin\Debug\net5.0\Ical.Net.Collections.dll
 C:\Users\Dayot\OneDrive\Desktop\architecture_logiciel\BridgeMonitor\BridgeMonitor\bin\Debug\net5.0\Ical.Net.dll
 C:\Users\Dayot\OneDrive\Desktop\architecture_logiciel\BridgeMonitor\BridgeMonitor\bin\Debug\net5.0\NodaTime.dll
